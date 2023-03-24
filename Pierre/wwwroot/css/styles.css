@@ -66,6 +66,13 @@ ul {
   color: black;
 }
 
+hr {
+  width: 25%;
+  border-style: dotted none none;
+  border-width: 7px;
+  border-color: rgb(175,181,188);
+}
+
 input[type=text] {
   width: 300px;
   height: 40px;
