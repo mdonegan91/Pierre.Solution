@@ -4,6 +4,6 @@ namespace Pierre.Models
 {
   public class ApplicationUser : IdentityUser
   {
-    public string Id { get; }
+    
   }
 }

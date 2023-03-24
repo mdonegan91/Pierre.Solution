@@ -1,0 +1,28 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Pierre.Models
+@model Pierre.Models.Treat
+
+<br>
+<h2>Edit this Treat:</h2>
+
+<h4>@Html.DisplayFor(model => model.TreatName)</h4><hr>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.TreatId)
+
+  @Html.LabelFor(model => model.TreatName)<br>
+  @Html.EditorFor(model => model.TreatName)<br><br>
+
+  @Html.LabelFor(model => model.TreatDescription)<br>
+  @Html.EditorFor(model => model.TreatDescription)<br><br>
+
+  @Html.LabelFor(model => model.Ranking)<br>
+  @Html.DropDownListFor(model => model.Ranking,
+  new SelectList(Enum.GetValues(typeof(Rating))), new { @class = "linky"})<br><br>
+
+  <input type="submit" class="buttony" value="Save" />
+}

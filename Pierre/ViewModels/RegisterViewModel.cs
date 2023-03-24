@@ -1,9 +1,13 @@
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace Pierre.ViewModels
 {
   public class RegisterViewModel
-  {
+  {    
     [Required]
     [EmailAddress]
     [Display(Name = "Email Address")]

@@ -1,0 +1,19 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Pierre.Models.Flavor
+
+<br>
+<h4>Add a new flavor</h4><hr>
+
+<p>@Html.ValidationMessageFor(model => model.FlavorTown, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.FlavorTown)<br>
+    @Html.TextBoxFor(model => model.FlavorTown)
+
+    <input type="submit" class="buttony" value="Add new flavor"/><hr>
+}
+<p>@Html.ActionLink("Back to Treat List", "Index", new { id = "nav"}, new { @class = "linky"} )</p>

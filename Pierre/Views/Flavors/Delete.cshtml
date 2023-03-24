@@ -1,0 +1,16 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Pierre.Models.Flavor
+
+<br>
+<h2>Are you sure you want to delete this flavor?</h2><hr>
+
+@Html.DisplayNameFor(model => model.FlavorTown): @Html.DisplayFor(model => model.FlavorTown)
+@using (Html.BeginForm())
+
+{
+  <br><input type="submit" class="buttony" value="Delete" /><hr>
+}
+<p>@Html.ActionLink("Back to Flavor List", "Index", new { id = "nav"}, new { @class = "linky"} )</p>

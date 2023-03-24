@@ -1,0 +1,38 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Pierre.Models;
+
+<br>
+<h1>All Treats</h1>
+<hr>
+
+@if (@Model.Count == 0)
+{
+  <h3>No treats have been added yet!</h3>
+} 
+else
+{
+  <ul>
+    @foreach (Treat treat in Model)
+    {
+      @Html.ActionLink($"{treat.TreatName}", "Details", new { id = treat.TreatId } , new { @class = "linky"} )
+    }
+  </ul>
+}
+
+<hr>
+
+@using (Html.BeginForm("Search", "Treats")) {
+<div class="search-container">
+        <input type="text" name="search" placeholder="Search All Treats..." class="search-input">
+        <a href="#" class="search-btn">
+                <i class="fas fa-search"></i>      
+        </a>
+    </div>
+}
+
+<hr>
+
+<p>@Html.ActionLink("Add new treat", "Create", new { id = "nav"}, new { @class = "linky"} )</p>

@@ -136,19 +136,10 @@ namespace Pierre.Controllers
       return View(model);
     }
 
-// This one works! Do not delete! -- Search by treat title
-    // [HttpPost, ActionName("Search")]
-    // public ActionResult Search(string search)
-    // {
-    //   List<Treat> model = _db.Treats.Where(treat => treat.TreatName == search).ToList();
-    //   return View(model);
-    // }
-
-// This is what we want: searching through TreatDescription
     [HttpPost, ActionName("Search")]
     public ActionResult Search(string search)
     {
-      List<Treat> model = _db.Treats.Where(treat => treat.TreatDescription.ToLower()
+      List<Treat> model = _db.Treats.Where(treat => treat.TreatName.ToLower()
                               .Contains(search.ToLower())).ToList();
       return View(model);
     }

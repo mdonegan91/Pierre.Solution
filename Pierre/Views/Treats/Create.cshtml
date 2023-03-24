@@ -1,0 +1,27 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Pierre.Models
+@model Pierre.Models.Treat
+<br>
+<h4>Add a new treat</h4>
+
+<p>@Html.ValidationMessageFor(model => model.TreatName, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+
+<p>@Html.ValidationMessageFor(model => model.TreatDescription, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.TreatName, "Treat Name")<br>
+  @Html.TextBoxFor(model => model.TreatName)<br><br>
+
+  @Html.LabelFor(model => model.TreatDescription)<br>
+  @Html.TextBoxFor(model => model.TreatDescription)<br><br>
+
+  @Html.LabelFor(model => model.Ranking)<br>
+  @Html.DropDownListFor(model => model.Ranking,
+  new SelectList(Enum.GetValues(typeof(Rating))), new { @class = "linky"} )<br><br>
+
+  <input type="submit" class="buttony" value="Add new treat" />
+}

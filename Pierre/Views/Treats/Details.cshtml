@@ -1,0 +1,44 @@
+@{
+  Layout = "_Layout";
+}
+
+@using System.Security.Claims
+@using Pierre.Models
+@model Pierre.Models.Treat
+
+<br>
+<h2>Treat Details</h2>
+<hr />
+<h3>Treat Name: @Html.DisplayFor(model => model.TreatName)</h3><hr>
+
+<h3>@Html.DisplayNameFor(model => model.TreatDescription): </h3>
+<p>@Html.DisplayFor(model => model.TreatDescription)</p>
+
+<hr>
+<h3>@Html.DisplayNameFor(model => model.Ranking):</h3>
+<p>@Html.DisplayFor(model => model.Ranking)</p>
+
+<hr>
+@if (@Model.JoinEntities.Count == 0)
+{
+  <p>This treat does not have any flavors yet!</p>
+}
+else
+{
+  <h4>This treat has the following flavors:</h4>
+  <ul>
+  @foreach (TreatFlavor join in Model.JoinEntities)
+    {
+      <li>Flavor: @join.Flavor.FlavorTown</li>
+      @using (Html.BeginForm("DeleteJoin", "Treats"))
+      {
+        @Html.Hidden("joinId", @join.TreatFlavorId)
+        <input type="submit" class="buttony" value="Delete" />
+      }
+    }
+  </ul>
+}
+
+<hr>
+<p>@Html.ActionLink("Edit Treat", "Edit", new { id = Model.TreatId }, new { @class = "linky"} ) | @Html.ActionLink("Delete Treat", "Delete", new { id = Model.TreatId }, new { @class = "linky"} ) | @Html.ActionLink("Add a Flavor", "AddFlavor", new {
+  id = Model.TreatId }, new { @class = "linky"} )</p>
