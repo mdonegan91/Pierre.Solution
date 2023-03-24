@@ -62,7 +62,7 @@ dotnet tool install --global dotnet-ef --version 6.0.0
 
 * _No known bugs._
 
-* _Please reach out with any questions or concerns_
+* _Please reach out with any questions or concerns [mollyrdonegan@gmail.com](mollyrdonegan@gmail.com)_
 
 ## 🥪 License 🥪
 
