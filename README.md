@@ -66,6 +66,6 @@ dotnet tool install --global dotnet-ef --version 6.0.0
 
 ## 🥪 License 🥪
 
-_[MIT](https://opensource.org/license/mit/)_
+_[MIT](https://github.com/mdonegan91/Pierre.Solution/blob/main/LICENSE)_
 
 Copyright (c) _2023_ _Molly Donegan_
