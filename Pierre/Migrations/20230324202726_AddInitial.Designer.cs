@@ -11,8 +11,8 @@ using Pierre.Models;
 namespace Pierre.Migrations
 {
     [DbContext(typeof(PierreContext))]
-    [Migration("20230324174245_AddRegister")]
-    partial class AddRegister
+    [Migration("20230324202726_AddInitial")]
+    partial class AddInitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

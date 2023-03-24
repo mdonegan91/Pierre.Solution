@@ -8,7 +8,7 @@
 <br>
 <h2>Flavor Details</h2>
 <hr />
-<h3>@Html.DisplayNameFor(model => model.FlavorTown): @Html.DisplayFor(model => model.FlavorTown)</h3>
+<h3> @Html.DisplayFor(model => model.FlavorTown)</h3>
 
 @if(@Model.JoinEntities.Count == 0)
 {
@@ -16,7 +16,7 @@
 }
 else
 {
-  <h4>Treats the flavor belongs to:</h4>
+  <h4>Treats this flavor belongs to:</h4>
   <ul>
   @foreach(TreatFlavor join in Model.JoinEntities)
   {
