@@ -2,7 +2,6 @@
   Layout = "_Layout";
 }
 
-@using System.Security.Claims
 @using Pierre.Models
 @model Pierre.Models.Treat
 
@@ -40,5 +39,8 @@ else
 }
 
 <hr>
+@if (@Model.UserId.Equals(@ViewBag.CurrentUser))
+{
 <p>@Html.ActionLink("Edit Treat", "Edit", new { id = Model.TreatId }, new { @class = "linky"} ) | @Html.ActionLink("Delete Treat", "Delete", new { id = Model.TreatId }, new { @class = "linky"} ) | @Html.ActionLink("Add a Flavor", "AddFlavor", new {
   id = Model.TreatId }, new { @class = "linky"} )</p>
+}

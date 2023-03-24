@@ -83,6 +83,8 @@ namespace Pierre.Controllers
 
     public ActionResult Delete(int id)
     {
+      string userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      ViewBag.CurrentUser = userId;
       Treat thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
       return View(thisTreat);
     }
