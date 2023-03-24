@@ -16,7 +16,7 @@
 
 ## 🧂 Description 🧂
 
-* A user can add a recipe with ingredients and instructions, to remember how to prepare favorite dishes.
+* A user can add a recipe with TreatDescription and instructions, to remember how to prepare favorite dishes.
 
 ## 🧂 Setup/Installation Requirements 🧂
 

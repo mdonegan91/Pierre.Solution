@@ -1,31 +1,40 @@
-﻿using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
-using Desktop.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using Pierre.Models;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
+using System.Security.Claims;
 
-namespace Desktop.Controllers;
-
-public class HomeController : Controller
+namespace Pierre.Controllers
 {
-    private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
+    public class HomeController : Controller
     {
-        _logger = logger;
-    }
+      private readonly PierreContext _db;
+      private readonly UserManager<ApplicationUser> _userManager;
 
-    public IActionResult Index()
+      public HomeController(UserManager<ApplicationUser> userManager, PierreContext db)
+      {
+        _userManager = userManager;
+        _db = db;
+      }
+      
+    [HttpGet("/")]
+    public async Task<ActionResult> Index()
     {
-        return View();
+      Dictionary<string, object[]> model = new Dictionary<string, object[]>();
+      
+      string userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
+      ViewBag.CurrentUser = userId;
+      if (currentUser != null)
+      {
+        Treat[] treats = _db.Treats
+                        .Where(entry => entry.User.Id == currentUser.Id)
+                        .ToArray();
+        model.Add("treats", treats);
+      }
+      return View(model);
     }
-
-    public IActionResult Privacy()
-    {
-        return View();
-    }
-
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-    }
+  }
 }
